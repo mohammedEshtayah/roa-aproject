@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<title>Register form</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0; 
+			font-family: sans-serif;
+		}
+		.hero{
+			height: 100%;
+			width: 100%;
+			background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(bg.jfif);
+			background-size: cover;
+			background-position: center;
+			position: absolute;
+		}
+		.from-box{
+			height: 480px;
+			width: 380px;
+			position: relative;
+			margin: 6% auto;
+			background:#fff;
+			padding: 5px;
+			overflow: hidden;
+		}
+		.button-box{
+			width: 220px;
+			margin: 35px auto;
+			position: relative;
+			box-shadow: 0 0 20px 9px #668cff;
+			border-radius: 30px;
+		}
+		.toggle-btn{
+			padding: 10px 30px;
+			cursor: pointer;
+			background: transparent;
+			border: 0;
+			outline: none;
+			position: relative; 
+			color: #00001a;
+		}
+		#btn{
+			top: 0;
+			left: 0;
+			position: absolute;
+			width: 110px;
+			height: 100%;
+			background: linear-gradient(to right, #00004d, #9999ff);
+			border-radius: 30px;
+			transition: .5s;
+		}
+		.input-group{
+			top: 180px;
+			position: absolute;
+			width: 280px;
+			transition: .5s;
+		}
+		.input-field{
+			width: 100%;
+			padding: 10px 0;
+			margin: 5px;
+			border-left: 0;
+			border-top: 0;
+			border-right: 0;
+			border-bottom: 1px solid #999;
+			outline: none;
+			background: transparent;
+		}
+		.submit-btn{
+			width: 85%;
+			padding: 10px 30px;
+			cursor: pointer;
+			display: block;
+			margin: auto;
+			background: linear-gradient(to right, #00004d, #9999ff);
+			border: 0;
+			outline: none;
+			border-radius: 30px; 
+			color: #00001a;
+		}
+		.check-box{
+			margin: 30px 10px 30px 0;
+		}
+		span{
+			color: #777;
+			font-size: 12px;
+			bottom: 68px;
+			position: absolute;
+		}
+		#login{
+			left: 50px;
+		}
+		#register{
+			left: 450px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="hero">
+		<div class="from-box">
+			<div class="button-box">
+				<div id="btn"></div>
+				<button type="button"  class="toggle-btn"  onclick="login()"> Log In</button>
+				<button type="button" class="toggle-btn"  onclick="register()"> Register</button>
+			</div>
+	    <form id="login" class="input-group">
+		  <input type="text" class="input-field" id="username" placeholder="User Name" required>
+		  <input type="Password" class="input-field" id="password" placeholder="Enter Password" required>
+		  <input type="checkbox" class="check-box" required><span>Remember Password</span>
+		  <button  id="b_login" type="submit" class="submit-btn"> Log In</button>
+	    </form> 
+	    <form id="register" class="input-group">
+		  <input type="text" id="r_username" class="input-field" placeholder="User Name" required>
+		  <input type="email" id="r_email"  class="input-field" placeholder="Email" required>
+		  <input type="Password" id="r_password"  class="input-field" placeholder="Enter Password" required>
+		  <input type="checkbox" id="r_checked"  class="check-box" required><span>I agree to the terms and conditions</span>
+		  <button   id="b_register" type="submit" class="submit-btn">Register</button>
+	    </form> 
+	    </div>
+	</div>
+	<script>
+		var x = document.getElementById("login");
+		var y = document.getElementById("register");
+		var z = document.getElementById("btn");
+		function register() {
+			x.style.left = "-400px";
+			y.style.left = "50px";
+			z.style.left = "110px";
+		}
+		function login() {
+			x.style.left = "50px";
+			y.style.left = "450px";
+			z.style.left = "0";
+		}
+
+		$(document).ready(function(){
+			$("#b_login").click(function(event){
+				event.preventDefault();  
+				$.ajax({
+					url: 'http://localhost/project/login.php?username='+ document.getElementById("username").value+
+					'&password='+document.getElementById("password").value,
+					method: 'get',
+					success: function(result){	
+						var temp = (JSON.parse(result)); 
+						console.log(temp.status);
+				}}); 
+			
+				
+				
+				
+			});
+
+						/* ------------------------------------ */
+
+			$("#b_register").click(function(event){
+				event.preventDefault();
+				var username=document.getElementById("r_username").value;
+				var password=document.getElementById("r_password").value; 
+				var email=document.getElementById("r_email").value;
+				var checked=document.getElementById("r_checked").checked; 
+				console.log(checked)
+				if(checked==true){
+					$.post("http://localhost/project/signup.php",
+					{
+						"username": username,
+						"password":password,
+						"email": email, 
+					},
+					function(data, status){
+						alert("Data: " + data + "\nStatus: " + status);
+					});
+					 
+				}
+		
+		
+		
+				
+			});
+		});   
+		
+		 
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<title>Second Step</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0; 
+			font-family: sans-serif;
+		}
+		.hero{
+			height: 100%;
+			width: 100%;
+			background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(bg.jfif);
+			background-size: cover;
+			background-position: center;
+			position: absolute;
+		}
+		.from-box{
+			height: 500px;
+			width: 780px;
+			position: relative;
+			margin: 6% auto;
+			background:#fff;
+			padding: 5px;
+			overflow: hidden;
+		}
+		.input-field{
+			width: 200px;
+			padding: 10px;
+			margin: 20px;
+			border-left: 0;
+			border-top: 0;
+			border-right: 0;
+			border: 1px solid #999;
+			outline: none;
+			background: transparent;
+		}
+.open-button {
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  position: fixed;
+  bottom: 160px;
+  right: 340px;
+  width: 170px;
+  background: linear-gradient(to right, #00004d, #9999ff);
+  border-radius: 30px;
+  transition: .5s;
+}		
+	</style>
+
+
+</head>
+<body>
+	<form action="#">
+<div class="hero">
+	<div class="from-box">
+		<h1>- Second Step ...</h1>
+		 <div id="show-result">
+		 	<div class="container">
+  <form action="">
+   
+    <label for="email">Your Email is : </label>
+    <input type="email" id="email" class="input-field" id="psw" name="psw" required>
+  </form>
+</div>
+ </div>
+<form ><button id="next" class="open-button" >Next</button></form>
+	</div>
+</div>
+</form>
+	
+
+<script>
+/* action="passwordTest.html" */
+$(document).ready(function(){
+	$("#next").click(function(event){
+				event.preventDefault();  
+				$.ajax({
+					url: 'http://localhost/project/checkEmail.php?email='+ document.getElementById("email").value,
+					method: 'get',
+					success: function(result){	
+						var temp = (JSON.parse(result)); 
+						console.log(temp.status);
+				}}); 
+			
+				console.log("temp.status");
+				
+				
+			});
+});
+</script>
+</body>
+</html>
